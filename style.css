@@ -1,0 +1,1058 @@
+@import url('https://fonts.googleapis.com/css2?family=Amita:wght@400;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    /* height: 100%; */
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: #fff;
+    background: #16070d;
+}
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        url("./r.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    transform: scale(1.08);
+
+    animation: backgroundMove 15s ease-in-out infinite alternate;
+
+    z-index: -3;
+}
+
+.background-overlay {
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(15, 2, 8, .88),
+            rgba(255, 93, 143, .88)
+        );
+
+    backdrop-filter: blur(2px);
+
+    z-index: -2;
+}
+
+
+@keyframes backgroundMove {
+
+    0% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1.18);
+    }
+
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.container {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+
+/* =========================================
+   SCREENS
+========================================= */
+
+.screen {
+    position: absolute;
+
+    width: min(92%, 620px);
+
+    max-height: 94vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(30px) scale(.96);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease,
+        visibility .7s ease;
+}
+
+.screen.active {
+
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =========================================
+   OPENING
+========================================= */
+
+.opening-content {
+    text-align: center;
+
+    max-width: 550px;
+
+    animation:
+        openingFloat 4s ease-in-out infinite;
+}
+
+@keyframes openingFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+}
+
+
+.small-label,
+.eyebrow {
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    font-weight: 600;
+
+    opacity: .75;
+
+    text-transform: uppercase;
+
+    margin-bottom: 16px;
+}
+
+
+.opening-content h1,
+.final-content h1 {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(42px, 8vw, 72px);
+
+    line-height: 1.05;
+
+    font-weight: 500;
+
+    margin-bottom: 24px;
+}
+
+.opening-content h1 span,
+.final-content h1 span {
+
+    display: block;
+
+    font-family:
+        "Amita",
+        cursive;
+
+    font-size:
+        clamp(38px, 7vw, 64px);
+
+    color: #ffb8cc;
+
+    text-shadow:
+        0 0 25px rgba(255, 120, 160, .45);
+}
+
+
+.opening-text {
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    color: rgba(255,255,255,.8);
+
+    margin-bottom: 32px;
+}
+
+
+/* =========================================
+   GLASS CARD
+========================================= */
+
+.glass-card {
+
+    width: min(100%, 450px);
+
+    padding: 38px 30px;
+
+    text-align: center;
+
+    background:
+        rgba(255,255,255,.09);
+
+    border:
+        1px solid rgba(255,255,255,.18);
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.35);
+
+    animation:
+        cardAppear .8s ease;
+}
+
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+.big-icon {
+
+    font-size: 60px;
+
+    margin-bottom: 15px;
+
+    animation:
+        heartBeat 1.8s infinite;
+}
+
+
+@keyframes heartBeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+
+}
+
+
+.glass-card h2 {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 30px;
+
+    margin-bottom: 15px;
+}
+
+
+.glass-card p {
+
+    color: rgba(255,255,255,.75);
+
+    line-height: 1.7;
+
+    font-size: 14px;
+
+    margin-bottom: 24px;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+#nameInput {
+
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    padding: 15px 20px;
+
+    border-radius: 50px;
+
+    background:
+        rgba(255,255,255,.12);
+
+    border:
+        1px solid rgba(255,255,255,.2);
+
+    color: #fff;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    margin-bottom: 15px;
+
+    transition: .3s ease;
+}
+
+#nameInput::placeholder {
+    color: rgba(255,255,255,.5);
+}
+
+#nameInput:focus {
+
+    background:
+        rgba(255,255,255,.18);
+
+    border-color:
+        rgba(255,150,180,.7);
+
+    box-shadow:
+        0 0 25px rgba(255,100,150,.15);
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.main-btn,
+.next-btn {
+
+    border: none;
+
+    cursor: pointer;
+
+    color: #fff;
+
+    font-family:
+        "Inter",
+        sans-serif;
+
+    font-weight: 600;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.main-btn {
+
+    padding:
+        14px 26px;
+
+    border-radius:
+        50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff477e,
+            #ff7ca1
+        );
+
+    box-shadow:
+        0 12px 35px rgba(255,65,120,.28);
+}
+
+
+.main-btn:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.03);
+
+    box-shadow:
+        0 18px 45px rgba(255,65,120,.4);
+}
+
+
+.main-btn:active {
+
+    transform:
+        scale(.96);
+}
+
+
+/* =========================================
+   JOURNEY
+========================================= */
+
+#journey {
+
+    justify-content:
+        flex-start;
+
+    padding-top: 3vh;
+
+    padding-bottom: 20px;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress-area {
+
+    width: min(100%, 500px);
+
+    margin-bottom: 15px;
+}
+
+.progress-top {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    opacity: .65;
+
+    margin-bottom: 7px;
+}
+
+
+.progress-bar {
+
+    width: 100%;
+
+    height: 3px;
+
+    background:
+        rgba(255,255,255,.15);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+#progressFill {
+
+    width: 10%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff477e,
+            #ffc1d2
+        );
+
+    border-radius: 20px;
+
+    transition:
+        width .8s cubic-bezier(.65,0,.35,1);
+}
+
+
+/* =========================================
+   PHOTO
+========================================= */
+
+.photo-area {
+
+    position: relative;
+
+    width: 210px;
+    height: 210px;
+
+    margin-bottom: 18px;
+}
+
+
+.photo-glow {
+
+    position: absolute;
+
+    inset: -20px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,80,135,.4),
+            transparent 65%
+        );
+
+    filter: blur(12px);
+
+    animation:
+        photoGlow 2.5s ease-in-out infinite alternate;
+}
+
+
+@keyframes photoGlow {
+
+    from {
+        transform: scale(.9);
+        opacity: .5;
+    }
+
+    to {
+        transform: scale(1.1);
+        opacity: .9;
+    }
+
+}
+
+
+.photo-frame {
+
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 7px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #ff91af,
+            #fff
+        );
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.4);
+
+    z-index: 1;
+}
+
+
+#stepPhoto {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    display: block;
+
+    transition:
+        opacity .45s ease,
+        transform .6s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================
+   MESSAGE CARD
+========================================= */
+
+.message-card {
+
+    width: min(100%, 560px);
+
+    padding:
+        20px 25px;
+
+    text-align: center;
+
+    background:
+        rgba(0,0,0,.38);
+
+    border:
+        1px solid rgba(255,255,255,.14);
+
+    border-radius: 24px;
+
+    backdrop-filter:
+        blur(15px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.22);
+}
+
+
+.step-icon {
+
+    font-size: 30px;
+
+    margin-bottom: 5px;
+
+    animation:
+        iconFloat 2.5s ease-in-out infinite;
+}
+
+
+@keyframes iconFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+}
+
+
+.message-card .eyebrow {
+
+    margin-bottom: 7px;
+
+    font-size: 9px;
+}
+
+
+#stepTitle {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(25px, 5vw, 34px);
+
+    font-weight: 500;
+
+    margin-bottom: 12px;
+}
+
+
+.message-text {
+
+    color:
+        rgba(255,255,255,.82);
+
+    font-size:
+        clamp(13px, 2vw, 15px);
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   NEXT BUTTON
+========================================= */
+
+.next-btn {
+
+    margin-top: 17px;
+
+    padding:
+        12px 22px;
+
+    border-radius:
+        50px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid rgba(255,255,255,.25);
+
+    backdrop-filter:
+        blur(10px);
+
+    font-size: 13px;
+}
+
+
+.next-btn span {
+
+    display: inline-block;
+
+    margin-left: 8px;
+
+    transition:
+        transform .3s ease;
+}
+
+
+.next-btn:hover {
+
+    background:
+        rgba(255,255,255,.18);
+
+    transform:
+        translateY(-2px);
+}
+
+
+.next-btn:hover span {
+
+    transform:
+        translateX(5px);
+}
+
+
+/* =========================================
+   FINAL SCREEN
+========================================= */
+
+#finalScreen {
+
+    text-align: center;
+
+    max-width: 650px;
+}
+
+
+.final-content {
+
+    width: 100%;
+
+    animation:
+        finalAppear 1.2s ease;
+}
+
+
+@keyframes finalAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(.9);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+.final-hearts {
+
+    font-size: 65px;
+
+    margin-bottom: 15px;
+
+    animation:
+        heartBeat 1.5s infinite;
+}
+
+
+.final-text {
+
+    max-width: 500px;
+
+    margin:
+        0 auto 25px;
+
+    color:
+        rgba(255,255,255,.8);
+
+    line-height: 1.8;
+
+    font-size: 15px;
+}
+
+
+.final-text strong {
+
+    color:
+        #ffb8cc;
+
+    font-size: 18px;
+}
+
+
+.signature {
+
+    font-family:
+        "Amita",
+        cursive;
+
+    font-size: 21px;
+
+    color:
+        #ffbfd0;
+
+    margin-bottom: 25px;
+}
+
+
+.signature span {
+
+    font-size: 16px;
+
+    opacity: .75;
+}
+
+
+/* =========================================
+   FLOATING HEARTS
+========================================= */
+
+#hearts {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 10;
+}
+
+
+.floating-heart {
+
+    position: absolute;
+
+    bottom: -40px;
+
+    animation:
+        heartRise linear forwards;
+
+    opacity: 0;
+
+}
+
+
+@keyframes heartRise {
+
+    0% {
+
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(.7);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .8;
+    }
+
+    100% {
+
+        transform:
+            translateY(-110vh)
+            rotate(360deg)
+            scale(1.2);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================
+   MUSIC BUTTON
+========================================= */
+
+.music-btn {
+
+    position: fixed;
+
+    right: 20px;
+    bottom: 20px;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(255,255,255,.2);
+
+    background:
+        rgba(0,0,0,.35);
+
+    color: #fff;
+
+    cursor: pointer;
+
+    backdrop-filter:
+        blur(10px);
+
+    z-index: 100;
+
+    transition:
+        transform .3s ease;
+}
+
+
+.music-btn:hover {
+
+    transform:
+        scale(1.1);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 14px;
+    }
+
+    .opening-content h1 {
+        font-size: 43px;
+    }
+
+    .opening-content h1 span {
+        font-size: 40px;
+    }
+
+    .glass-card {
+        padding: 30px 20px;
+    }
+
+    .photo-area {
+        width: 155px;
+        height: 155px;
+    }
+
+    #journey {
+        padding-top: 2vh;
+    }
+
+    .message-card {
+        padding: 17px 18px;
+    }
+
+    #stepTitle {
+        font-size: 25px;
+    }
+
+    .message-text {
+        font-size: 13px;
+        line-height: 1.55;
+    }
+
+    .next-btn {
+        margin-top: 12px;
+    }
+
+    .final-content h1 {
+        font-size: 42px;
+    }
+
+    .final-content h1 span {
+        font-size: 38px;
+    }
+
+    .final-text {
+        font-size: 13px;
+        line-height: 1.65;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-height: 700px) {
+
+    .photo-area {
+        width: 125px;
+        height: 125px;
+
+        margin-bottom: 10px;
+    }
+
+    .message-card {
+        padding: 12px 15px;
+    }
+
+    .step-icon {
+        font-size: 22px;
+    }
+
+    #stepTitle {
+        font-size: 22px;
+        margin-bottom: 7px;
+    }
+
+    .message-text {
+        font-size: 12px;
+        line-height: 1.45;
+    }
+
+    .next-btn {
+        margin-top: 9px;
+        padding: 9px 18px;
+    }
+
+}

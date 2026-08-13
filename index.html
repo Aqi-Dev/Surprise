@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Happy Birthday My Love ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background"></div>
+    <div class="background-overlay"></div>
+
+    <!-- Floating hearts -->
+    <div id="hearts"></div>
+
+    <!-- Music -->
+    <audio id="birthdayMusic" loop>
+        <source src="./y2mate (mp3cut.net).mp3" type="audio/mpeg">
+    </audio>
+
+    <main class="container">
+
+        <!-- =========================
+             OPENING
+        ========================== -->
+
+        <section id="opening" class="screen active">
+
+            <div class="opening-content">
+
+                <div class="small-label">
+                    A LITTLE SURPRISE
+                </div>
+
+                <h1>
+                    For The Woman
+                    <span>I Love ❤️</span>
+                </h1>
+
+                <p class="opening-text">
+                    I made something special for you...
+                    <br>
+                    Something that comes from my heart.
+                </p>
+
+                <button id="openGift" class="main-btn">
+                    🎁 Open Your Gift
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             NAME SCREEN
+        ========================== -->
+
+        <section id="nameScreen" class="screen">
+
+            <div class="glass-card">
+
+                <div class="big-icon">💖</div>
+
+                <p class="eyebrow">
+                    BEFORE WE BEGIN...
+                </p>
+
+                <h2>
+                    What's your beautiful name?
+                </h2>
+
+                <p>
+                    Because this little journey
+                    was made especially for you. ❤️
+                </p>
+
+                <input
+                    id="nameInput"
+                    type="text"
+                    maxlength="25"
+                    placeholder="Your beautiful name..."
+                >
+
+                <button id="nameBtn" class="main-btn">
+                    Continue ❤️
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MAIN JOURNEY
+        ========================== -->
+
+        <section id="journey" class="screen">
+
+            <!-- Progress -->
+            <div class="progress-area">
+
+                <div class="progress-top">
+                    <span id="stepLabel">01 / 10</span>
+
+                    <span>
+                        Made With ❤️
+                    </span>
+                </div>
+
+                <div class="progress-bar">
+                    <div id="progressFill"></div>
+                </div>
+
+            </div>
+
+
+            <!-- Photo -->
+            <div class="photo-area">
+
+                <div class="photo-glow"></div>
+
+                <div class="photo-frame">
+
+                    <img
+                        id="stepPhoto"
+                        src="./love/images/r1.jpg"
+                        alt="Our memory"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- Message -->
+            <div class="message-card">
+
+                <div id="stepIcon" class="step-icon">
+                    🎁
+                </div>
+
+                <p id="stepTag" class="eyebrow">
+                    STEP 01
+                </p>
+
+                <h2 id="stepTitle">
+                    A Little Surprise For You
+                </h2>
+
+                <div id="stepText" class="message-text">
+                    I made something special
+                    for the most special woman
+                    in my life. ❤️
+                </div>
+
+            </div>
+
+
+            <!-- Continue -->
+            <button id="nextBtn" class="next-btn">
+                Continue
+                <span>→</span>
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             FINAL SCREEN
+        ========================== -->
+
+        <section id="finalScreen" class="screen">
+
+            <div class="final-content">
+
+                <div class="final-hearts">
+                    ❤️
+                </div>
+
+                <p class="eyebrow">
+                    ONE LAST THING...
+                </p>
+
+                <h1>
+                    I Would Still
+                    <span>Choose You ❤️</span>
+                </h1>
+
+                <p class="final-text">
+
+                    If life gave me the chance
+                    to start all over again...
+
+                    <br><br>
+
+                    I'd still look for you.
+                    <br>
+                    I'd still choose you.
+                    <br>
+                    I'd still fall in love with you.
+
+                    <br><br>
+
+                    <strong>
+                        Every single time.
+                    </strong>
+
+                </p>
+
+                <p class="signature">
+                    Happy Birthday, My Love. ❤️
+                    <br>
+                    <span>Forever yours. 💍</span>
+                </p>
+
+                <button id="finalBtn" class="main-btn">
+                    💌 Open Your Final Surprise
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SMALL MUSIC BUTTON
+        ========================== -->
+
+        <button id="musicBtn" class="music-btn">
+            🔇
+        </button>
+
+    </main>
+
+
+    <script src="a.js"></script>
+
+</body>
+</html>
