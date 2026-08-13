@@ -1,0 +1,715 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    position: relative;
+    font-family: "Inter", sans-serif;
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255, 52, 125, 0.16),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(180, 55, 255, 0.14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(255, 70, 140, 0.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #050106 0%,
+            #10030c 45%,
+            #17040f 70%,
+            #050106 100%
+        );
+}
+
+
+/* =====================================================
+   CINEMATIC LIGHT
+===================================================== */
+
+body::before {
+    content: "";
+    position: fixed;
+
+    width: 700px;
+    height: 700px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 54, 124, 0.16) 0%,
+            rgba(255, 54, 124, 0.06) 35%,
+            transparent 70%
+        );
+
+    filter: blur(25px);
+
+    pointer-events: none;
+
+    z-index: -5;
+
+    animation: cinematicGlow 6s ease-in-out infinite alternate;
+}
+
+
+@keyframes cinematicGlow {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(0.9);
+
+        opacity: 0.65;
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.2);
+
+        opacity: 1;
+    }
+}
+
+
+/* =====================================================
+   SMALL AMBIENT LIGHTS
+===================================================== */
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 350px;
+    height: 350px;
+
+    top: -120px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(190, 50, 255, 0.18),
+            transparent 70%
+        );
+
+    filter: blur(50px);
+
+    pointer-events: none;
+
+    z-index: -4;
+
+    animation: ambientMove 10s ease-in-out infinite alternate;
+}
+
+
+@keyframes ambientMove {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-100px, 120px);
+    }
+}
+
+
+/* =====================================================
+   MAIN 3D CONTAINER
+===================================================== */
+
+#drag-container {
+
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    perspective: 1200px;
+
+    cursor: grab;
+
+    user-select: none;
+
+    touch-action: none;
+
+    overflow: visible;
+}
+
+
+#drag-container:active {
+    cursor: grabbing;
+}
+
+
+/* =====================================================
+   SPIN CONTAINER
+===================================================== */
+
+#spin-container {
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    transform-style: preserve-3d;
+
+    will-change: transform;
+}
+
+
+/* =====================================================
+   PHOTO DESIGN
+===================================================== */
+
+#spin-container img {
+
+    position: absolute;
+
+    width: 120px;
+    height: 170px;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+
+    padding: 4px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.95),
+            rgba(255,145,180,0.9),
+            rgba(255,255,255,0.8)
+        );
+
+    border: 1px solid rgba(255,255,255,0.65);
+
+    box-shadow:
+
+        0 8px 25px
+        rgba(0,0,0,0.55),
+
+        0 0 12px
+        rgba(255,80,145,0.25),
+
+        0 0 35px
+        rgba(255,60,130,0.12);
+
+    object-position: center;
+
+    backface-visibility: visible;
+
+    -webkit-box-reflect:
+        below 10px
+        linear-gradient(
+            transparent 0%,
+            rgba(0,0,0,0.12) 45%,
+            rgba(0,0,0,0.35) 100%
+        );
+
+    transition:
+        filter 0.4s ease,
+        box-shadow 0.4s ease;
+
+    will-change: transform;
+}
+
+
+/* =====================================================
+   IMAGE HOVER
+===================================================== */
+
+#spin-container img:hover {
+
+    filter:
+        brightness(1.12)
+        saturate(1.15);
+
+    box-shadow:
+
+        0 15px 35px
+        rgba(0,0,0,0.65),
+
+        0 0 20px
+        rgba(255,80,145,0.55),
+
+        0 0 60px
+        rgba(255,60,130,0.30);
+}
+
+
+/* =====================================================
+   IMAGE LIGHT BORDER
+===================================================== */
+
+#spin-container img::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.35);
+}
+
+
+/* =====================================================
+   BIRTHDAY MESSAGE
+===================================================== */
+
+#spin-container p {
+
+    position: absolute;
+
+    width: 720px;
+
+    bottom: -245px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    white-space: normal;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(28px, 4vw, 48px);
+
+    font-weight: 600;
+
+    line-height: 1.25;
+
+    letter-spacing: 1px;
+
+    color: #ffffff;
+
+    text-shadow:
+
+        0 0 8px
+        rgba(255,255,255,0.5),
+
+        0 0 20px
+        rgba(255,80,145,0.7),
+
+        0 0 45px
+        rgba(255,50,130,0.5);
+
+    animation:
+        titleGlow 3s ease-in-out infinite alternate;
+
+    pointer-events: none;
+}
+
+
+@keyframes titleGlow {
+
+    from {
+        text-shadow:
+
+            0 0 8px
+            rgba(255,255,255,0.5),
+
+            0 0 20px
+            rgba(255,80,145,0.6),
+
+            0 0 35px
+            rgba(255,50,130,0.35);
+    }
+
+    to {
+        text-shadow:
+
+            0 0 12px
+            rgba(255,255,255,0.8),
+
+            0 0 30px
+            rgba(255,80,145,0.9),
+
+            0 0 65px
+            rgba(255,50,130,0.65);
+    }
+}
+
+
+/* =====================================================
+   GROUND
+===================================================== */
+
+#ground {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        rotateX(90deg);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255,50,120,0.22) 0%,
+            rgba(255,50,120,0.10) 25%,
+            rgba(255,50,120,0.03) 50%,
+            transparent 72%
+        );
+
+    filter: blur(8px);
+
+    opacity: 0.8;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   GROUND INNER GLOW
+===================================================== */
+
+#ground::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 20%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,120,170,0.22),
+            transparent 70%
+        );
+
+    filter: blur(25px);
+}
+
+
+/* =====================================================
+   ROTATION ANIMATION
+===================================================== */
+
+@keyframes spin {
+
+    from {
+        transform:
+            rotateY(0deg);
+    }
+
+    to {
+        transform:
+            rotateY(360deg);
+    }
+}
+
+
+@keyframes spinRevert {
+
+    from {
+        transform:
+            rotateY(360deg);
+    }
+
+    to {
+        transform:
+            rotateY(0deg);
+    }
+}
+
+
+/* =====================================================
+   MUSIC BUTTON
+===================================================== */
+
+#music-container {
+
+    position: fixed;
+
+    right: 24px;
+    bottom: 24px;
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.07);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.18);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+
+        0 10px 35px
+        rgba(0,0,0,0.45),
+
+        0 0 25px
+        rgba(255,70,140,0.18);
+
+    z-index: 100;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+#music-container::before {
+
+    content: "♫";
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 24px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 12px
+        rgba(255,100,160,0.8);
+}
+
+
+#music-container:hover {
+
+    transform:
+        scale(1.12);
+
+    background:
+        rgba(255,90,150,0.15);
+
+    box-shadow:
+
+        0 12px 40px
+        rgba(0,0,0,0.5),
+
+        0 0 35px
+        rgba(255,70,140,0.35);
+}
+
+
+/* =====================================================
+   SUBTLE VIGNETTE
+===================================================== */
+
+html::after {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 90;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 45%,
+            rgba(0,0,0,0.35) 100%
+        );
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    #drag-container {
+
+        perspective: 900px;
+    }
+
+
+    #spin-container img {
+
+        width: 95px;
+        height: 135px;
+
+        border-radius: 15px;
+
+        padding: 3px;
+    }
+
+
+    #spin-container p {
+
+        width: 90vw;
+
+        bottom: -195px;
+
+        font-size:
+            clamp(24px, 7vw, 34px);
+
+        line-height: 1.25;
+
+        letter-spacing: 0.5px;
+    }
+
+
+    #music-container {
+
+        right: 16px;
+        bottom: 16px;
+
+        width: 46px;
+        height: 46px;
+    }
+
+
+    #music-container::before {
+
+        font-size: 21px;
+    }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+
+    #spin-container img {
+
+        width: 82px;
+        height: 118px;
+    }
+
+
+    #spin-container p {
+
+        bottom: -175px;
+
+        font-size: 23px;
+
+        padding: 0 15px;
+    }
+
+
+    #ground {
+
+        opacity: 0.55;
+    }
+}
+
+
+/* =====================================================
+   SHORT SCREENS
+===================================================== */
+
+@media (max-height: 650px) {
+
+    #spin-container p {
+
+        bottom: -185px;
+    }
+
+
+    #spin-container img {
+
+        width: 100px;
+        height: 140px;
+    }
+}
+
+
+/* =====================================================
+   REDUCE MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+    }
+}
